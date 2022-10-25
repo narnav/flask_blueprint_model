@@ -1,4 +1,4 @@
-from project import db
+from project import db,app
 
 class Club(db.Model):
 
@@ -17,5 +17,5 @@ class Club(db.Model):
     # __repr__ is used to represent an instance, such as for print() function
     def __repr__(self):
         return f"Name: {self.name}"
-
-db.create_all()
+with app.app_context():
+    db.create_all()
