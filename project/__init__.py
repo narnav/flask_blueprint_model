@@ -3,10 +3,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+
 app = Flask(__name__)
+UPLOAD_FOLDER = 'UPLOAD_FOLDER'
 app.config['SECRET_KEY'] = 'supersecret' #to allow us to use forms, not safe for deployment
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ##########################################
 ############ DATABASE SETUP ##############
 ##########################################
@@ -24,6 +26,8 @@ Migrate(app, db)
 
 from project.core.views import core
 from project.clubs.views import clubs
+from project.students.views import students
 
+app.register_blueprint(students)
 app.register_blueprint(core)
 app.register_blueprint(clubs)

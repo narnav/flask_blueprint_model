@@ -23,7 +23,7 @@ def create_club():
         db.session.commit()
 
         return redirect(url_for('clubs.list_clubs'))
-    return render_template('clubs/create_club.html', form=form)
+    return render_template('create_club.html', form=form)
 
 
 @clubs.route('/list_clubs')
@@ -34,4 +34,4 @@ def list_clubs():
     # for x in clubs_list:
     #     res.append({x.name: x.description})
     # return json.dumps(res)
-    return render_template('clubs/clubs.html', clubs_list=clubs_list)
+    return render_template('clubs.html', clubs_list=clubs_list)
